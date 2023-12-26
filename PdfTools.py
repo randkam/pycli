@@ -1,5 +1,17 @@
 from PyPDF2 import PdfReader, PdfWriter
 
+def swap(input_File, output_File):
+    input_Pdf = PdfReader(open(input_File, 'rb'))
+    output_Pdf = PdfWriter()
+
+    p = [input_Pdf.pages[1],input_Pdf.pages[0]]
+    
+    output_Pdf.add_page(p[0])
+    output_Pdf.add_page(p[1])
+
+    with open(output_File, 'wb') as f:
+        output_Pdf.write(f)
+
 def keepPage(input_File, output_File, list):
   input_Pdf = PdfReader(open(input_File, 'rb'))
   output_Pdf = PdfWriter()
@@ -61,7 +73,8 @@ elif toDo == '3':
       pList.append(int(pAdd))
   keepPage(input_File, "output.pdf", pList)
 elif toDo == '4':
-   input_File = input("enter file which you like to reverse order")
+   input_File = input("enter file which you like to reverse order(PDF must be length of 2):")
+   swap(input_File,"output.PDF")
 
 # Some Changes
    
