@@ -5,7 +5,7 @@ def swap(input_File, output_File):
     output_Pdf = PdfWriter()
 
     p = [input_Pdf.pages[1],input_Pdf.pages[0]]
-    
+
     output_Pdf.add_page(p[0])
     output_Pdf.add_page(p[1])
 
@@ -35,9 +35,9 @@ def removePage(input_File, output_File, page):
     with open(output_File, 'wb') as f:
         output_Pdf.write(f)
 
-def mergePDF(input_File, output_File, pageToAdd):
-  original_Pdf = PdfReader(open(input_File, 'rb'))
-  extra_Pdf = PdfReader(open(pageToAdd, 'rb'))
+def mergePDF(input_Files, output_File):
+  original_Pdf = PdfReader(open(input_Files[0], 'rb'))
+  extra_Pdf = PdfReader(open(input_Files[1], 'rb'))
   output_Pdf = PdfWriter()
 
   for i in range(len(original_Pdf.pages)):
@@ -55,4 +55,4 @@ def mergePDF(input_File, output_File, pageToAdd):
 
 
 # Some Changes
-   
+
