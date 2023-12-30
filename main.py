@@ -1,5 +1,6 @@
 import argparse
 import PdfTools
+import folderTools
 '''
 pycli:
  - pdf
@@ -84,8 +85,17 @@ pdf_pageretainparser.add_argument('-o',
 pdf_pageretainparser.set_defaults(func=PdfTools.keepPage)
 
 # create the parser for the "b" command
-parser_b = subparsers1.add_parser('files', help='b help')
+folderParser = subparsers1.add_parser('folder', help='b help')
+folderSubparsers = folderParser.add_subparsers()
+folderdelfile = folderSubparsers.add_parser('deletefile',help = 'delete files from folder')
+folderdelfile.add_argument('-f','--folder',help = 'input folder',required = True)
+folderdelfile.add_argument('-n','--name',help = 'name of file(s) to delete', required= True, nargs = '+')
+folderdelfile.set_defaults(func= folderTools.delfile)
 
+folderdeltype = folderSubparsers.add_parser('scandelete', help= 'delete files which include cetain words')
+folderdeltype.add_argument('-f','folder', help = 'input folder', required = True)
+folderdeltype.add_argument('-w','--word', help= 'delete files inclding this word/character file(ex. b, txt,...etc)', required= True)
+folderdeltype.set_defaults(func= folderTools.delType)
 args = parser.parse_args()
 
 
