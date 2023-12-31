@@ -1,9 +1,5 @@
 import os
 
-
-
-
-
 def delType(arg):
     for filename in os.listdir(arg.folder):
         if arg.word in filename:
