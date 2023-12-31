@@ -1,11 +1,14 @@
-# folderSubparsers = folderParser.add_subparsers()
+import FileTools
 
-# folderdeltype = folderSubparsers.add_parser('scandelete', help= 'delete files which include cetain words')
-# folderdeltype.add_argument('-f','--folder', help = 'input folder', required = True)
-# folderdeltype.add_argument('-w','--word', help= 'delete files inclding this word/character file(ex. b, txt,...etc)', required= True)
-# folderdeltype.set_defaults(func= folderTools.delType)
+def createPdfParser(fileParser):
+    fileSubParser = fileParser.add_subparsers()
 
-# folderMergeTxt = folderSubparsers.add_parser('mergetxt', help = 'merge txt files in folder')
-# folderMergeTxt.add_argument('-f','--folder',help='input folder', required=True)
-# folderMergeTxt.add_argument('-o','--output',help='output file', required=True)
-# folderMergeTxt.set_defaults(func = folderTools.mergeTxt)
+    deleteFilesContainingStringParser = fileSubParser.add_parser('scandelete', help= 'delete files which include cetain words')
+    deleteFilesContainingStringParser.add_argument('-f','--folder', help = 'input folder', required = True)
+    deleteFilesContainingStringParser.add_argument('-w','--word', help= 'delete files including this word/character in the filename', required= True)
+    deleteFilesContainingStringParser.set_defaults(func= FileTools.deleteFilesContainingString)
+
+    mergeFilesOfSameTypeParser = fileSubParser.add_parser('mergetxt', help = 'merge txt files in folder')
+    mergeFilesOfSameTypeParser.add_argument('-f','--folder',help='input folder', required=True)
+    mergeFilesOfSameTypeParser.add_argument('-o','--output',help='output file', required=True)
+    mergeFilesOfSameTypeParser.set_defaults(func = FileTools.mergeFilesOfSameType)
