@@ -1,15 +1,11 @@
 import os
 
-
-
-
-
-def delType(arg):
+def deleteFilesContainingString(arg):
     for filename in os.listdir(arg.folder):
         if arg.word in filename:
             os.remove(os.path.join(arg.folder, filename))
         
-def mergeTxt(arg):
+def mergeFilesOfSameType(arg):
     files = []
     for (_dirpath, _dirnames, filenames) in os.walk(arg.folder):
         files.extend(filenames)
