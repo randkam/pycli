@@ -1,16 +1,12 @@
 import os
 
 
-def delfile(arg):
-    for filename in os.listdir(arg.folder):
-        if os.path.isfile(os.path.join(arg.name, filename)):
-            if filename == arg.name:
-                os.remove(os.path.join(arg.name, filename))
+
 
 
 def delType(arg):
     for filename in os.listdir(arg.folder):
-        if arg.type in filename:
+        if arg.word in filename:
             os.remove(os.path.join(arg.folder, filename))
         
 def mergeTxt(arg):

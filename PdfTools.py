@@ -56,22 +56,23 @@ def removePage(arg):
 
 
 def mergePDF(arg):
-  input_Files = arg.input
-  output_File = arg.output
-  original_Pdf = PdfReader(open(input_Files[0], 'rb'))
-  extra_Pdf = PdfReader(open(input_Files[1], 'rb'))
-  output_Pdf = PdfWriter()
+    input_Files = arg.input
+    output_File = arg.output
 
-  for i in range(len(original_Pdf.pages)):
-    p = original_Pdf.pages[i]
-    output_Pdf.add_page(p)
+    original_Pdf = PdfReader(open(input_Files[k], 'rb'))
+    extra_Pdf = PdfReader(open(input_Files[k+1], 'rb'))
+    output_Pdf = PdfWriter()
 
-  for i in range(len(extra_Pdf.pages)):
-    p = extra_Pdf.pages[i]
-    output_Pdf.add_page(p)
+    for i in range(len(original_Pdf.pages)):
+        p = original_Pdf.pages[i]
+        output_Pdf.add_page(p)
 
-  with open(output_File, 'wb') as f:
-    output_Pdf.write(f)
+    for i in range(len(extra_Pdf.pages)):
+        p = extra_Pdf.pages[i]
+        output_Pdf.add_page(p)
+
+    with open(output_File, 'wb') as f:
+        output_Pdf.write(f)
 
 
 # Some Changes
