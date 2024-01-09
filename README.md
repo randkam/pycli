@@ -32,7 +32,7 @@ pip3 install PyPDF2
 - Pages should be sapced
 - pages included will not be kept in output file
 
-#File-tools
+# File-tools
 tools for files(DeleteFilesContainingString, Merge)
 ## file merge
 ### Combines all files in a given folder and outputs them merged together
@@ -42,7 +42,7 @@ tools for files(DeleteFilesContainingString, Merge)
 
 ## Remove files including string
 ### removes all files in a given folder that include a given string
-- Can be run via the following command: ```python main.py file swap -i input1.pdf -p 1 3 -o output.pdf``` where input and output files can be changed accordingly and the pages entered after p will be swapped.
-- Pages should be sapced
-- pages included will be swapped
+- Can be run via the following command: ```python main.py file scandelete -f folder1 -w word ``` where input folder and string can be named accordingly.
+- all files including the string will be deleted
+
 
